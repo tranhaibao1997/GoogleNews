@@ -102,7 +102,7 @@ function chooseCategory() {
         // console.log("run here")
         // url.searchParams.append('category', category);
         // window.location.href = url
-        window.history.pushState("object or string", "Page Title", `?${category}`);
+        window.history.pushState("object or string", "Page Title", `?category=${category}`);
 
 
 
