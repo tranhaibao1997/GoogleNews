@@ -99,8 +99,11 @@ function chooseCategory() {
     let url = new URL(window.location.href)
     console.log(url.toString().split(""))
     if (!url.toString().split("").includes(char => char == "c" && "a" && "t" && "e" && "g" && "o" && "r" && "y")) {
-        console.log("run here")
-        url.searchParams.append('category', category);
+        // console.log("run here")
+        // url.searchParams.append('category', category);
+        // window.location.href = url
+        window.history.pushState("object or string", "Page Title", `?${category}`);
+
 
 
     } else {
