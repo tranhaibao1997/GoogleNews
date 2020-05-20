@@ -104,7 +104,7 @@ function checkboxchange(event, index) {
     let checkBoxes = document.querySelectorAll("#filter-section li input")
 
     if (event.target.checked) {
-        let newArray = newsList.filter(elm => elm.source.name !== myArray[index])
+        let newArray = newsList.filter(elm => elm.source.name == myArray[index])
         renderArray(newArray)
         document.getElementById("numNews").innerHTML = `No. of Article: ${newArray.length}`
         for (let i = 0; i < checkBoxes.length; i++) {
