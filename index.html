@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List</title>
+    <title>Google News</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a8c4c24db6.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -24,10 +24,19 @@
         <div class="subhead">York, MA - Thursday August 30, 1978 - Seven Pages</div>
         <p id="numNews"></p>
         <ul id="filter-section"></ul>
-        <div class="turnPage">
+        <div class="turnPage" style="margin-bottom: 30px;">
             <button onclick="prev()">Prev</button>
             <button onclick="next()">Next</button>
         </div>
+        <label for="cars">Choose a category:</label>
+
+        <select id="news-category">
+            <option value="Covid">Covid</option>
+            <option value="Vietnam">VietNam</option>
+            <option value="US">US</option>
+
+        </select>
+        <button id="category-select" onclick="chooseCategory()">Go To category</button>
     </div>
     <div class="content">
         <div class="collumns" id="newsArea">

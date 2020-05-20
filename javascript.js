@@ -1,10 +1,11 @@
 let newsList = []
-let category = "apple"
 let pageNum = 1
 let pageSize = 20
 const apiKey = "d5c38ab43f10457fa7d24cd3e56b4296"
+
 const loadNews = async() => {
-    let url = `https://newsapi.org/v2/everything?q=${category}&page=${pageNum}&pageSize=${pageSize}&from=2020-05-19&to=2020-05-19&sortBy=popularity&apiKey=${apiKey}`
+
+    let url = `https://newsapi.org/v2/everything?q=apple&page=${pageNum}&pageSize=${pageSize}&from=2020-05-19&to=2020-05-19&sortBy=popularity&apiKey=${apiKey}`
     console.log(url)
     let data = await fetch(url)
     let result = await data.json();
@@ -84,4 +85,32 @@ function next() {
     pageSize = 20
     pageNum++;
     loadNews()
+}
+
+async function chooseCategory() {
+    let category = document.getElementById("news-category").value
+    let newUrl = new URL(`https://newsapi.org/v2/everything?q=${category}&page=${pageNum}&pageSize=${pageSize}&from=2020-05-19&to=2020-05-19&sortBy=popularity&apiKey=${apiKey}`);
+    let data = await fetch(newUrl)
+    let result = await data.json();
+    newsList = result.articles
+    renderArray(newsList)
+    console.log(newsList)
+    document.getElementById("numNews").innerHTML = `No. of Article: ${newsList.length}`
+    showSource(newsList)
+
+
+    // let url = new URL(window.location.href)
+    // url.searchParams.append('category', category);
+    // console.log(url)
+    // window.location.href = url
+
+
+
+
+
+    // // If your expected result is "http://foo.bar/?x=1&y=2&x=42"
+
+
+    // // If your expected result is "http://foo.bar/?x=42&y=2"
+    // url.searchParams.set('x', 42);
 }
