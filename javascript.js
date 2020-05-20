@@ -101,10 +101,20 @@ function checkboxchange(event, index) {
         }
     }
     let myArray = Object.keys(obj1)
+    let checkBoxes = document.querySelectorAll("#filter-section li input")
+
     if (event.target.checked) {
         let newArray = newsList.filter(elm => elm.source.name !== myArray[index])
         renderArray(newArray)
         document.getElementById("numNews").innerHTML = `No. of Article: ${newArray.length}`
+        for (let i = 0; i < checkBoxes.length; i++) {
+            if (checkBoxes[i] == checkBoxes[index]) {
+                console.log("cho nay dc giuuu", checkBoxes[i])
+            } else {
+                console.log("eo chay vong for", checkBoxes[i])
+                checkBoxes[i].checked = false
+            }
+        }
 
     } else {
         renderArray(newsList)
