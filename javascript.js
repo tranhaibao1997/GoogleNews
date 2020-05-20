@@ -25,7 +25,6 @@ const loadNews = async() => {
     let result = await data.json();
     newsList = result.articles
     renderArray(newsList)
-    console.log(newsList)
     document.getElementById("numNews").innerHTML = `No. of Article: ${newsList.length}`
     showSource(newsList)
 
@@ -83,10 +82,35 @@ function showSource(list) {
         }
     }
     let myArray = Object.keys(obj1)
-    let html = myArray.map(item => `<li>
-    <input type="checkbox" id="source-name" check>
+    let html = myArray.map((item, index) => `<li>
+    <input type="checkbox" id="source-name" onchange="checkboxchange(event,${index})">
     <p>${item}:<span>${obj1[item]}</span></p></li>`).join("")
     document.getElementById("filter-section").innerHTML = html
+}
+
+function checkboxchange(event, index) {
+    let newArray = newsList.map(elm => elm.source.name)
+    console.log(newArray)
+    let obj1 = {};
+    for (let i = 0; i < newArray.length; i++) {
+        let name = newArray[i];
+        if (!obj1[name]) {
+            obj1[name] = 1;
+        } else {
+            obj1[name]++;
+        }
+    }
+    let myArray = Object.keys(obj1)
+    if (event.target.checked) {
+        let newArray = newsList.filter(elm => elm.source.name !== myArray[index])
+        renderArray(newArray)
+        document.getElementById("numNews").innerHTML = `No. of Article: ${newArray.length}`
+
+    } else {
+        renderArray(newsList)
+        document.getElementById("numNews").innerHTML = `No. of Article: ${newsList.length}`
+    }
+
 }
 
 function prev() {
