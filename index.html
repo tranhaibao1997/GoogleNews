@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a8c4c24db6.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+    <h1>News</h1>
+    <div class="head">
+        <div class="headerobjectswrapper">
+            <div class="weatherforcastbox"><span style="font-style: italic;">Weatherforcast for the next 24 hours:
+                    Plenty of Sunshine</span><br><span>Wind: 7km/h SSE; Ther: 21°C; Hum: 82%</span></div>
+            <header>Newpost York</header>
+        </div>
+
+        <div class="subhead">York, MA - Thursday August 30, 1978 - Seven Pages</div>
+        <p id="numNews"></p>
+        <ul id="filter-section"></ul>
+        <div class="turnPage">
+            <button onclick="prev()">Prev</button>
+            <button onclick="next()">Next</button>
+        </div>
+    </div>
+    <div class="content">
+        <div class="collumns" id="newsArea">
+
+
+        </div>
+        <button onclick="readMore()">Read More</button>
+    </div>
+    <script src="pagination.min.js"></script>
+    <script src="javascript.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.3/moment.min.js"></script>
+
+</body>
+
+</html>
