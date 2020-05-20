@@ -4,6 +4,19 @@ let pageSize = 20
 const apiKey = "d5c38ab43f10457fa7d24cd3e56b4296"
 let category = 'apple'
 
+
+if (window.location.href.toString().split("").filter(char => char == "?").length > 0) {
+    console.log(window.location.href.toString().split("").filter((char, index) => {
+        if (char == "=") {
+            let array = window.location.href.toString().split("")
+            console.log(index)
+            category = array.splice(index + 1, (array.length - index)).join("")
+            console.log(category)
+        }
+    }))
+}
+
+
 const loadNews = async() => {
 
     let url = `https://newsapi.org/v2/everything?q=${category}&page=${pageNum}&pageSize=${pageSize}&from=2020-05-19&to=2020-05-19&sortBy=popularity&apiKey=${apiKey}`
