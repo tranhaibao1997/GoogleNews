@@ -12,6 +12,7 @@ if (window.location.href.toString().split("").filter(char => char == "?").length
             console.log(index)
             category = array.splice(index + 1, (array.length - index)).join("")
             console.log(category)
+
         }
     }))
 }
@@ -135,11 +136,15 @@ function next() {
     loadNews()
 }
 
-function chooseCategory() {
+async function chooseCategory() {
     category = document.getElementById("news-category").value
-    pageSize = 20
-    pageNum = 1
-    loadNews()
+    let categoryUrl = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apiKey}`
+    let data = await fetch(categoryUrl)
+    let result = await data.json();
+    newsList = result.articles
+    renderArray(newsList)
+    document.getElementById("numNews").innerHTML = `No. of Article: ${newsList.length}`
+    showSource(newsList)
 
 
 
@@ -158,14 +163,4 @@ function chooseCategory() {
         window.location.href = url
     }
 
-
-
-
-
-
-    // // If your expected result is "http://foo.bar/?x=1&y=2&x=42"
-
-
-    // // If your expected result is "http://foo.bar/?x=42&y=2"
-    // url.searchParams.set('x', 42);
 }
